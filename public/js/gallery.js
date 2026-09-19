@@ -14,7 +14,7 @@ function catCard(cat) {
   const loc = [cat.location.city, cat.location.state, cat.location.country].filter(Boolean).join(', ');
   const pendingBadge = cat.status === 'pending' ? '<span class="tag claimed">Claimed</span>' : '';
   const code = COUNTRY_CODES[cat.location.country] || '';
-  const flag = code ? `<img src="https://flagcdn.com/w40/${code}.png" alt="${escapeHtml(cat.location.country)}" class="cat-flag" title="${escapeHtml(cat.location.country)}" />` : '';
+  const flag = code ? `<img src="https://flagcdn.com/w20/${code}.png" alt="${escapeHtml(cat.location.country)}" class="cat-flag" title="${escapeHtml(cat.location.country)}" />` : '';
   return `
     <a class="card${cat.status === 'pending' ? ' card-pending' : ''}" href="cat.html?id=${cat.id}">
       <div class="card-image-wrapper">

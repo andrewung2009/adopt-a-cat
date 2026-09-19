@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adopt a Cat</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <a href="index.html" class="brand">&#128008; Adopt a Cat</a>
+    <nav></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Find your new best friend</h1>
+      <p>Every cat deserves a loving home. Browse, filter, and adopt today.</p>
+    </section>
+
+    <form class="filters" id="filters">
+      <div>
+        <label for="age">Age</label>
+        <select id="age" name="age"><option value="">Any age</option></select>
+      </div>
+      <div>
+        <label for="personality">Personality</label>
+        <select id="personality" name="personality"><option value="">Any personality</option></select>
+      </div>
+      <div>
+        <label for="home">Preferred home</label>
+        <select id="home" name="home"><option value="">Any home</option></select>
+      </div>
+      <div>
+        <label for="location">Location</label>
+        <input id="location" name="location" type="text" placeholder="City, state, or country" />
+      </div>
+      <div style="display:flex; align-items:flex-end;">
+        <button type="submit" style="width:100%;">Apply filters</button>
+      </div>
+      <div id="pref-actions" style="grid-column:1/-1; display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" id="save-prefs" class="secondary">Save preferences</button>
+      </div>
+    </form>
+
+    <p id="count" style="color:#666; margin-bottom:12px;"></p>
+    <section class="grid" id="grid"></section>
+    <p class="empty" id="empty" style="display:none;">No cats match your filters. Try broadening your search.</p>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+Presentation: What does the visitor see or use? Filter Bar: Age, Personality, Preferred Home, Location. Gallery grid of the cats. Phone number. "Adopt Cat Now" feature. Health of cat.
+Logic: What decision or rule must the system apply? The website must want to make adopting a cat easy. Owner must give real email, verification email received on email. Make sure the owner is an animal lover. Make sure the owner will have existing pets.
+Data: What information must the system remember? Login details, user preferences, the types of cats the user has served, location of the owner (eg the country/state/city).

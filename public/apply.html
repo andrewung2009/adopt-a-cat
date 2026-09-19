@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send an Inquiry</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <a href="index.html" class="brand">&#128008; Adopt a Cat</a>
+    <nav></nav>
+  </header>
+
+  <main>
+    <form class="form" id="inquiry-form" style="max-width:560px;">
+      <h2>Send an Inquiry</h2>
+      <p id="cat-name" style="color:#666;"></p>
+      <p class="msg" id="msg"></p>
+      <label><span>Your name</span><input type="text" id="name" required /></label>
+      <label><span>Your email</span><input type="email" id="email" required /></label>
+      <label><span>Message</span><textarea id="message" rows="5" placeholder="Tell us about your home and why you would like to adopt this cat."></textarea></label>
+      <button type="submit" style="width:100%;">Send Inquiry</button>
+      <p style="margin-top:14px; text-align:center;"><a href="index.html">Back to cats</a></p>
+    </form>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/apply.js"></script>
+</body>
+</html>

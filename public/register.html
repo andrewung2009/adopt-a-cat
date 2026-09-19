@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create account</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <a href="index.html" class="brand">&#128008; Adopt a Cat</a>
+    <nav></nav>
+  </header>
+
+  <main>
+    <form class="form" id="register-form">
+      <h2>Create your account</h2>
+      <p class="msg" id="msg"></p>
+      <label><span>First name</span><input type="text" id="first-name" required /></label>
+      <label><span>Last name</span><input type="text" id="last-name" required /></label>
+      <label><span>Email</span><input type="email" id="email" required /></label>
+      <label><span>Password (8+ characters)</span><input type="password" id="password" minlength="8" required /></label>
+      <label><span>Confirm password</span><input type="password" id="confirm-password" minlength="8" required /></label>
+      <label><span>Phone</span><input type="tel" id="phone" /></label>
+      <fieldset>
+        <legend>Your location</legend>
+        <label><span>Country</span><input type="text" id="country" /></label>
+        <label><span>State / Province</span><input type="text" id="state" /></label>
+        <label><span>City</span><input type="text" id="city" /></label>
+      </fieldset>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" id="experience" style="width:auto;" />
+        <span style="margin:0;">I have owned or cared for cats before (not a first-timer)</span>
+      </label>
+      <button type="submit" style="width:100%;">Create account</button>
+      <p style="margin-top:14px;">Already have an account? <a href="login.html">Log in</a></p>
+    </form>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

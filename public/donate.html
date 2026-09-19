@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate to the shelter</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <a href="index.html" class="brand">&#128008; Adopt a Cat</a>
+    <nav></nav>
+  </header>
+
+  <main>
+    <form class="form" id="donate-form" style="max-width:480px;">
+      <h2>Make a donation</h2>
+      <p>Your donation helps us care for cats like Mochi, Nori, and Basil.</p>
+      <p class="msg" id="msg"></p>
+      <label><span>Amount ($)</span><input type="number" id="amount" min="1" step="0.01" required placeholder="e.g. 25" /></label>
+      <label><span>Message (optional)</span><textarea id="message" rows="3" placeholder="A kind note for the cats..."></textarea></label>
+      <button type="submit" style="width:100%;">Donate now</button>
+      <p style="margin-top:14px; text-align:center;"><a href="index.html">Back to cats</a></p>
+    </form>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/donate.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <a href="index.html" class="brand">&#128008; Adopt a Cat</a>
+    <nav></nav>
+  </header>
+
+  <main>
+    <form class="form" id="login-form">
+      <h2>Log in</h2>
+      <p class="msg" id="msg"></p>
+      <label><span>Email</span><input type="email" id="email" required /></label>
+      <label><span>Password</span><input type="password" id="password" required /></label>
+      <button type="submit" style="width:100%;">Log in</button>
+      <p style="margin-top:14px;">New here? <a href="register.html">Create an account</a></p>
+    </form>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

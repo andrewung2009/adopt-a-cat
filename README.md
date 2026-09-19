@@ -4,12 +4,16 @@ A full-stack cat adoption website built with Node.js + Express and `node:sqlite`
 
 ## Features
 
-- **Browse cats** with filters (age, personality, preferred home, location)
+- **Browse cats** with filters (age, personality, preferred home, location/country)
+- **Country flags** — small flag overlay on each cat card
+- **Searchable country dropdown** — filter cats by country on gallery and registration
 - **Adoption inquiries** — submit name/email/message to claim a cat
+- **Confirm password** — client + server validation on registration
 - **Authentication** — register/login with email verification, admin account
-- **Admin dashboard** — manage inquiries, cat statuses, feed/unfed cats
+- **Admin dashboard** — manage inquiries, cat statuses, feed/unfeed cats (30s auto-revert)
 - **Donations** — general shelter donation page
 - **User preferences** — save filter preferences for faster browsing
+- **Claimed badge** — pending cats shown with "Claimed" badge and faded styling
 
 ## Tech Stack
 
@@ -19,6 +23,7 @@ A full-stack cat adoption website built with Node.js + Express and `node:sqlite`
 - `express-session` (auth)
 - `bcryptjs` (password hashing)
 - `nodemailer` (email via jsonTransport in dev)
+- `flagcdn.com` (country flag images)
 
 ## Setup
 
@@ -26,7 +31,7 @@ A full-stack cat adoption website built with Node.js + Express and `node:sqlite`
 # Install dependencies
 npm install
 
-# Seed the database
+# Seed the database (run from WSL on Windows)
 node seed.js
 
 # Start the server
@@ -35,10 +40,14 @@ npm start
 
 Then visit **http://localhost:3000** in your browser.
 
+> **Windows users:** The server runs inside WSL. Seed the database from WSL to avoid DB path conflicts:
+> ```bash
+> wsl bash -c "cd /mnt/c/Users/user/Desktop/opencode-check && node seed.js"
+> ```
+
 ## Login Credentials
 
 - **Admin:** `admin@shelter.com` / `password123`
-- **Regular user:** `adopter@example.com` / `password123`
 
 ## Project Structure
 
@@ -56,14 +65,19 @@ Then visit **http://localhost:3000** in your browser.
 ├── public/
 │   ├── index.html       # Gallery/home page
 │   ├── login.html       # Login page
-│   ├── register.html    # Registration page
+│   ├── register.html    # Registration page with country picker
 │   ├── cat.html         # Cat detail page
 │   ├── apply.html       # Adoption inquiry form
 │   ├── account.html     # User account page
 │   ├── donate.html      # Donation page
 │   ├── admin.html       # Admin dashboard
-│   └── js/              # Frontend JavaScript
-├── seed.js              # Database seed script
+│   └── js/
+│       ├── api.js           # Fetch wrapper, auth helpers
+│       ├── gallery.js       # Gallery filters, country flags, card rendering
+│       ├── countries.js     # Country list (195 countries)
+│       ├── country-codes.js # Country name to ISO code mapping
+│       └── register.js      # Registration form with country picker
+├── seed.js              # Database seed script (10 cats, 1 admin user)
 └── server.js            # Express entry point
 ```
 

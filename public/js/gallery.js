@@ -3,8 +3,12 @@ const empty = document.getElementById('empty');
 const count = document.getElementById('count');
 const filters = document.getElementById('filters');
 const saveBtn = document.getElementById('save-prefs');
+const locationInput = document.getElementById('location');
+const countryList = document.getElementById('country-list');
+const countryPicker = document.getElementById('country-picker');
 
 let loggedInUser = null;
+let selectedCountry = '';
 
 function catCard(cat) {
   const loc = [cat.location.city, cat.location.state, cat.location.country].filter(Boolean).join(', ');
@@ -69,7 +73,7 @@ function getFilterValues() {
     age: filters.age.value,
     personality: filters.personality.value,
     home: filters.home.value,
-    location: filters.location.value.trim(),
+    location: selectedCountry || locationInput.value.trim(),
   };
 }
 
@@ -77,7 +81,28 @@ function setFilterValues(prefs) {
   if (prefs.age) filters.age.value = prefs.age;
   if (prefs.personality) filters.personality.value = prefs.personality;
   if (prefs.home) filters.home.value = prefs.home;
-  if (prefs.location) filters.location.value = prefs.location;
+  if (prefs.location) {
+    selectedCountry = prefs.location;
+    locationInput.value = prefs.location;
+    renderCountryList(prefs.location);
+  }
+}
+
+function renderCountryList(filter = '') {
+  const term = filter.toLowerCase();
+  const filtered = COUNTRIES.filter((c) => c.toLowerCase().includes(term));
+  countryList.innerHTML = filtered.map((c) => `
+    <div class="country-item${c === selectedCountry ? ' selected' : ''}" data-country="${escapeHtml(c)}">${escapeHtml(c)}</div>
+  `).join('');
+  countryList.style.display = filtered.length ? 'block' : 'none';
+}
+
+function selectCountry(country) {
+  selectedCountry = country;
+  locationInput.value = country;
+  countryList.style.display = 'none';
+  renderCountryList();
+  applyFilters();
 }
 
 async function loadSavedPreferences() {
@@ -117,6 +142,26 @@ function applyFilters() {
   loadCats(getFilterValues());
 }
 
+locationInput.addEventListener('focus', () => {
+  renderCountryList(locationInput.value);
+});
+
+locationInput.addEventListener('input', () => {
+  selectedCountry = '';
+  renderCountryList(locationInput.value);
+});
+
+countryList.addEventListener('click', (e) => {
+  const item = e.target.closest('.country-item');
+  if (item) selectCountry(item.dataset.country);
+});
+
+document.addEventListener('click', (e) => {
+  if (!countryPicker.contains(e.target)) {
+    countryList.style.display = 'none';
+  }
+});
+
 filters.addEventListener('change', applyFilters);
 filters.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -137,5 +182,5 @@ if (saveBtn) {
 (async () => {
   await loadOptions();
   await loadSavedPreferences();
-  if (!document.getElementById('age').value) await loadCats();
+  if (!document.getElementById('age').value) loadCats();
 })();

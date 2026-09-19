@@ -24,7 +24,12 @@
       <label><span>Phone</span><input type="tel" id="phone" /></label>
       <fieldset>
         <legend>Your location</legend>
-        <label><span>Country</span><input type="text" id="country" /></label>
+        <label><span>Country</span>
+          <div class="country-picker">
+            <input type="text" id="country" placeholder="Search country..." autocomplete="off" />
+            <div id="register-country-list" class="country-list"></div>
+          </div>
+        </label>
         <label><span>State / Province</span><input type="text" id="state" /></label>
         <label><span>City</span><input type="text" id="city" /></label>
       </fieldset>
@@ -38,6 +43,7 @@
   </main>
 
   <script src="js/api.js"></script>
+  <script src="js/countries.js"></script>
   <script src="js/register.js"></script>
 </body>
 </html>

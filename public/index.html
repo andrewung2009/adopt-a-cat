@@ -32,8 +32,11 @@
         <select id="home" name="home"><option value="">Any home</option></select>
       </div>
       <div>
-        <label for="location">Location</label>
-        <input id="location" name="location" type="text" placeholder="City, state, or country" />
+        <label for="location">Country</label>
+        <div id="country-picker" class="country-picker">
+          <input id="location" name="location" type="text" placeholder="Search country..." autocomplete="off" />
+          <div id="country-list" class="country-list"></div>
+        </div>
       </div>
       <div style="display:flex; align-items:flex-end;">
         <button type="submit" style="width:100%;">Apply filters</button>
@@ -49,6 +52,7 @@
   </main>
 
   <script src="js/api.js"></script>
+  <script src="js/countries.js"></script>
   <script src="js/gallery.js"></script>
 </body>
 </html>
